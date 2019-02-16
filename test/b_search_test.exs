@@ -9,4 +9,10 @@ defmodule BSearchTest do
   test "returns nil if the value is not in the list" do
     assert BSearch.search([1,2,3,4,5,6], 8) == nil
   end
+
+  test "only accepts sorted lists" do
+    assert_raise RuntimeError, "The list must be sorted", fn ->
+      BSearch.search([2,1,6,4,5,6], 8)
+    end
+  end
 end
